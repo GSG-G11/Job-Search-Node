@@ -24,3 +24,16 @@ test('Get Error page', done => {
       done();
     });
 });
+
+test('Get results', done => {
+  supertest(router)
+    .get('/search?search=php&location=london')
+    .expect(200)
+    .end((err, res) => {
+      if (err) return done(err);
+      expect.assertions(2);
+      expect(res.statusCode).toBe(200);
+      expect(res.body.results.length).toBe(20);
+      done();
+    });
+});

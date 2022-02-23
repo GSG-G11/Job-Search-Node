@@ -45,6 +45,7 @@ form input:focus {
   height: 100px;
   margin: 0 auto;
   display: none;
+  margin-top: 2.4rem;
 }
 
 .loading-element.loading {
