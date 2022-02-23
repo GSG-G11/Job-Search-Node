@@ -1,7 +1,15 @@
+import cities from '../data/cities.js';
+
+console.log(cities);
 const searchForm = document.querySelector('#search-form');
 const resultsContainer = document.querySelector('.result-container');
 const loadingElement = document.querySelector('.loading-element');
+const cityInput = document.querySelector('datalist');
 
+//Add cities to datalist
+cities.sort().forEach(city => {
+  cityInput.innerHTML += `<option value="${city}">`;
+});
 // Configure form submission
 function configureFormListener() {
   searchForm.addEventListener('submit', e => {
@@ -13,7 +21,9 @@ function configureFormListener() {
 
     // Make a request to the API
     fetch(
-      `http://localhost:3000/?search=${search.value}&location=${location.value}&country=gb`
+      `http://localhost:3000/?search=${
+        search.value
+      }&location=${location.value.toLowerCase()}&country=gb`
     )
       .then(response => response.json())
       .then(({results}) => {
