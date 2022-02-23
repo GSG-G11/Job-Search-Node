@@ -24,9 +24,11 @@
             type="text"
             class="form-control"
             placeholder="Location"
-            id="location"
             name="location"
+            id="location"
+            list="cities"
           />
+          <datalist id="cities"></datalist>
           <button class="btn" type="submit">Search</button>
         </form>
       </div>
@@ -39,6 +41,6 @@
         <div class="result-container"></div>
       </div>
     </main>
-    <script src="./js/script.js"></script>
+    <script src="./js/script.js" type="module"></script></script>
   </body>
 </html>
