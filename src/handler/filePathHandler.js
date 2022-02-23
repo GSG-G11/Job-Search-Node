@@ -1,10 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-
-function showErrorPage(response) {
-  response.writeHead(500, {'Content-Type': 'text/html'});
-  response.end('<h1>Server Error, Contact the Administrator</h1>');
-}
+const {showErrorPage} = require('./ErrorPageHandler');
 
 const filePathHandler = (req, res) => {
   //Get the file path from the request

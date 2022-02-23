@@ -11,3 +11,16 @@ test('Get home page', done => {
       done();
     });
 });
+
+test('Get Error page', done => {
+  supertest(router)
+    .get('/potato')
+    .expect(404)
+    .end((err, res) => {
+      if (err) return done(err);
+      expect.assertions(2);
+      expect(res.statusCode).toBe(404);
+      expect(res.text).toBe('<h1>Server Error, Contact the Administrator</h1>');
+      done();
+    });
+});
