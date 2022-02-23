@@ -1,6 +1,10 @@
 import cities from '../data/cities.js';
 
-console.log(cities);
+window.process = {
+  env: {
+    NODE_ENV: 'production',
+  },
+};
 const searchForm = document.querySelector('#search-form');
 const resultsContainer = document.querySelector('.result-container');
 const loadingElement = document.querySelector('.loading-element');
@@ -19,11 +23,14 @@ function configureFormListener() {
     const {search, location} = e.target;
     startLoading();
 
+    console.log(process.env.NODE_ENV);
     // Make a request to the API
     fetch(
-      `http://localhost:3000/?search=${
-        search.value
-      }&location=${location.value.toLowerCase()}&country=gb`
+      process.env.NODE_ENV === 'development'
+        ? `http://127.0.0.1:5000/?search=${
+            search.value
+          }&location=${location.value.toLowerCase()}&country=gb`
+        : `/?search=${search.value}&location=${location.value.toLowerCase()}`
     )
       .then(response => response.json())
       .then(({results}) => {

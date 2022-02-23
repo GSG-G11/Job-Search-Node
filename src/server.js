@@ -1,6 +1,9 @@
 const router = require('./router');
+const config = require('./config');
 
+console.log(config.NODE_ENV, config.HOST);
 const {createServer} = require('http');
 
-const PORT = process.env.PORT || 3000;
-createServer(router).listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+createServer(router).listen(config.PORT, config.HOST, () =>
+  console.log(`Server listening on port ${config.PORT}`)
+);
