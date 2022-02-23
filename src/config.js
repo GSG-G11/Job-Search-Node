@@ -1,7 +1,7 @@
 const env = require('env2')('./src/env.json');
 
 const config = {
-  NODE_ENV: process.env.NODE_ENV || 'development',
+  NODE_ENV: process.env.NODE_ENV || 'production',
   HOST: process.env.HOST || '127.0.0.1',
   PORT: process.env.PORT || 3000,
   APP_ID: process.env.APP_ID,

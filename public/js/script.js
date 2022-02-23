@@ -25,13 +25,7 @@ function configureFormListener() {
 
     console.log(process.env.NODE_ENV);
     // Make a request to the API
-    fetch(
-      process.env.NODE_ENV === 'development'
-        ? `http://127.0.0.1:5000/?search=${
-            search.value
-          }&location=${location.value.toLowerCase()}&country=gb`
-        : `/?search=${search.value}&location=${location.value.toLowerCase()}`
-    )
+    fetch(`/?search=${search.value}&location=${location.value.toLowerCase()}`)
       .then(response => response.json())
       .then(({results}) => {
         stopLoading();
